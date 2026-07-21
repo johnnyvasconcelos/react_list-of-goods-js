@@ -20,9 +20,13 @@ export function App() {
   const [lastChange, setLastChange] = useState('');
 
   const handleSortAlphabetically = () => {
-    const copy = [...goodsCopy].sort();
+    const copy = [...goodsFromServer].sort();
 
-    if (lastChange.startsWith('reverse')) {
+    if (
+      lastChange === 'reverse' ||
+      lastChange === 'reverse-alphabetic' ||
+      lastChange === 'reverse-length'
+    ) {
       copy.reverse();
       setLastChange('reverse-alphabetic');
     } else {
@@ -33,9 +37,13 @@ export function App() {
   };
 
   const handleSortByLength = () => {
-    const copy = [...goodsCopy].sort((a, b) => a.length - b.length);
+    const copy = [...goodsFromServer].sort((a, b) => a.length - b.length);
 
-    if (lastChange.startsWith('reverse')) {
+    if (
+      lastChange === 'reverse' ||
+      lastChange === 'reverse-alphabetic' ||
+      lastChange === 'reverse-length'
+    ) {
       copy.reverse();
       setLastChange('reverse-length');
     } else {
