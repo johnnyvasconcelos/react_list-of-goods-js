@@ -22,15 +22,27 @@ export function App() {
   const handleSortAlphabetically = () => {
     const copy = [...goodsCopy].sort();
 
+    if (lastChange.startsWith('reverse')) {
+      copy.reverse();
+      setLastChange('reverse-alphabetic');
+    } else {
+      setLastChange('alphabetic');
+    }
+
     setGoodsCopy(copy);
-    setLastChange('alphabetic');
   };
 
   const handleSortByLength = () => {
     const copy = [...goodsCopy].sort((a, b) => a.length - b.length);
 
+    if (lastChange.startsWith('reverse')) {
+      copy.reverse();
+      setLastChange('reverse-length');
+    } else {
+      setLastChange('length');
+    }
+
     setGoodsCopy(copy);
-    setLastChange('length');
   };
 
   const resetGoods = () => {
