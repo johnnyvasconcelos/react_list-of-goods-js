@@ -2,7 +2,7 @@ import 'bulma/css/bulma.css';
 import './App.scss';
 import { useState } from 'react';
 
-export const goodsFromServer = [
+export const goodsServer = [
   'Dumplings',
   'Carrot',
   'Eggs',
@@ -16,11 +16,11 @@ export const goodsFromServer = [
 ];
 
 export function App() {
-  const [goodsCopy, setGoodsCopy] = useState([...goodsFromServer]);
+  const [goodsCopy, setGoodsCopy] = useState([...goodsServer]);
   const [lastChange, setLastChange] = useState('');
 
   const handleSortAlphabetically = () => {
-    const copy = [...goodsFromServer].sort();
+    const copy = [...goodsServer].sort();
 
     if (
       lastChange === 'reverse' ||
@@ -37,7 +37,7 @@ export function App() {
   };
 
   const handleSortByLength = () => {
-    const copy = [...goodsFromServer].sort((a, b) => a.length - b.length);
+    const copy = [...goodsServer].sort((a, b) => a.length - b.length);
 
     if (
       lastChange === 'reverse' ||
@@ -54,7 +54,7 @@ export function App() {
   };
 
   const resetGoods = () => {
-    setGoodsCopy([...goodsFromServer]);
+    setGoodsCopy([...goodsServer]);
     setLastChange('');
   };
 
