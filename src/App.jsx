@@ -2,7 +2,7 @@ import 'bulma/css/bulma.css';
 import './App.scss';
 import { useState } from 'react';
 
-export const goodsServer = [
+export const goodsFromServer = [
   'Dumplings',
   'Carrot',
   'Eggs',
@@ -16,11 +16,11 @@ export const goodsServer = [
 ];
 
 export function App() {
-  const [goodsCopy, setGoodsCopy] = useState([...goodsServer]);
+  const [goodsCopy, setGoodsCopy] = useState([...goodsFromServer]);
   const [lastChange, setLastChange] = useState('');
 
   const handleSortAlphabetically = () => {
-    const copy = [...goodsServer].sort();
+    const copy = [...goodsFromServer].sort();
 
     if (
       lastChange === 'reverse' ||
@@ -37,7 +37,7 @@ export function App() {
   };
 
   const handleSortByLength = () => {
-    const copy = [...goodsServer].sort((a, b) => a.length - b.length);
+    const copy = [...goodsFromServer].sort((a, b) => a.length - b.length);
 
     if (
       lastChange === 'reverse' ||
@@ -54,7 +54,7 @@ export function App() {
   };
 
   const resetGoods = () => {
-    setGoodsCopy([...goodsServer]);
+    setGoodsCopy([...goodsFromServer]);
     setLastChange('');
   };
 
@@ -84,7 +84,7 @@ export function App() {
         <button
           type="button"
           className={`button is-info ${
-            lastChange === 'alphabetic' ? '' : 'is-light'
+            lastChange.includes('alphabetic') ? '' : 'is-light'
           }`}
           onClick={handleSortAlphabetically}
         >
@@ -94,7 +94,7 @@ export function App() {
         <button
           type="button"
           className={`button is-success ${
-            lastChange === 'length' ? '' : 'is-light'
+            lastChange.includes('length') ? '' : 'is-light'
           }`}
           onClick={handleSortByLength}
         >
