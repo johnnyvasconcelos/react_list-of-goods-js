@@ -19,26 +19,26 @@ export function App() {
   const [goodsCopy, setGoodsCopy] = useState([...goodsFromServer]);
   const [lastChange, setLastChange] = useState('');
 
-  const sortAlphabetically = () => {
+  const handleSortAlphabetically = () => {
     const copy = [...goodsCopy].sort();
 
     setGoodsCopy(copy);
     setLastChange('alphabetic');
   };
 
-  const sortByLength = () => {
+  const handleSortByLength = () => {
     const copy = [...goodsCopy].sort((a, b) => a.length - b.length);
 
     setGoodsCopy(copy);
     setLastChange('length');
   };
 
-  const reset = () => {
+  const resetGoods = () => {
     setGoodsCopy([...goodsFromServer]);
     setLastChange('');
   };
 
-  const reverse = () => {
+  const handleReverse = () => {
     const copy = [...goodsCopy].reverse();
 
     setGoodsCopy(copy);
@@ -66,7 +66,7 @@ export function App() {
           className={`button is-info ${
             lastChange === 'alphabetic' ? '' : 'is-light'
           }`}
-          onClick={sortAlphabetically}
+          onClick={handleSortAlphabetically}
         >
           Sort alphabetically
         </button>
@@ -76,7 +76,7 @@ export function App() {
           className={`button is-success ${
             lastChange === 'length' ? '' : 'is-light'
           }`}
-          onClick={sortByLength}
+          onClick={handleSortByLength}
         >
           Sort by length
         </button>
@@ -86,7 +86,7 @@ export function App() {
           className={`button is-warning ${
             lastChange.startsWith('reverse') ? '' : 'is-light'
           }`}
-          onClick={reverse}
+          onClick={handleReverse}
         >
           Reverse
         </button>
@@ -95,7 +95,7 @@ export function App() {
           <button
             type="button"
             className="button is-danger is-light"
-            onClick={reset}
+            onClick={resetGoods}
           >
             Reset
           </button>
